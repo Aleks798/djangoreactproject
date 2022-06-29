@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'insurance_policies',
+    'insurance_policies'
 ]
 
 MIDDLEWARE = [
