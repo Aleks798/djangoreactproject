@@ -71,12 +71,12 @@ class Region(models.Model):
 class InsurancePolicy(models.Model):
     id = models.BigAutoField(primary_key=True)
     number = models.CharField("Number", max_length=100, unique=True)
-    policy_holder = models.OneToOneField(Client, on_delete=models.CASCADE)
-    policy_owner = models.OneToOneField(Client, on_delete=models.CASCADE)
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    insurance_company = models.OneToOneField(InsuranceCompany, on_delete=models.CASCADE)
-    type_Of_insurance = models.OneToOneField(TypeOfInsurance, on_delete=models.CASCADE)
-    region = models.OneToOneField(Region, on_delete=models.CASCADE)
+    policy_holder = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
+    policy_owner = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    insurance_company = models.ForeignKey(InsuranceCompany, on_delete=models.DO_NOTHING)
+    type_Of_insurance = models.ForeignKey(TypeOfInsurance, on_delete=models.DO_NOTHING)
+    region = models.ForeignKey(Region, on_delete=models.DO_NOTHING)
     registration_date = models.DateTimeField("Registration date", auto_now_add=True)  # https://docs.djangoproject.com/en/4.0/ref/models/fields/#datetimefield
     start_date = models.DateTimeField('Start date', auto_now_add=True)
     end_date = models.DateTimeField('End date', auto_now_add=False)
