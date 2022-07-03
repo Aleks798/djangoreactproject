@@ -71,8 +71,8 @@ class Region(models.Model):
 class InsurancePolicy(models.Model):
     id = models.BigAutoField(primary_key=True)
     number = models.CharField("Number", max_length=100, unique=True)
-    policy_holder = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
-    policy_owner = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
+    policy_holder = models.ForeignKey(Client, on_delete=models.DO_NOTHING, related_name='policy_holder')
+    policy_owner = models.ForeignKey(Client, on_delete=models.DO_NOTHING, related_name='policy_owner')
     product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     insurance_company = models.ForeignKey(InsuranceCompany, on_delete=models.DO_NOTHING)
     type_Of_insurance = models.ForeignKey(TypeOfInsurance, on_delete=models.DO_NOTHING)
