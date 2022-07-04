@@ -112,7 +112,7 @@ class RiskTable(models.Model):
 
 class PeriodOfInsurance(models.Model):
     id = models.BigAutoField(primary_key=True)
-    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='insurance_policies')
+    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='ins_policies')
     start_date = models.DateTimeField('Start date', auto_now_add=True)
     end_date = models.DateTimeField('End date', auto_now_add=False)
 
