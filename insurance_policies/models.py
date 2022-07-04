@@ -101,7 +101,7 @@ class InsurancePolicy(models.Model):
 
 class RiskTable(models.Model):
     id = models.BigAutoField(primary_key=True)
-    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='insurance_policy')
+    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='insurance_policies')
     risk = models.ForeignKey(Risk, on_delete=models.DO_NOTHING, related_name='risk')
     insurance_rate = models.DecimalField(max_digits=7, decimal_places=4)
     insurance_premium = models.DecimalField(max_digits=15, decimal_places=2)
@@ -112,7 +112,7 @@ class RiskTable(models.Model):
 
 class PeriodOfInsurance(models.Model):
     id = models.BigAutoField(primary_key=True)
-    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='insurance_policy')
+    insurance_policy = models.ForeignKey(InsurancePolicy, on_delete=models.DO_NOTHING, related_name='insurance_policies')
     start_date = models.DateTimeField('Start date', auto_now_add=True)
     end_date = models.DateTimeField('End date', auto_now_add=False)
 
