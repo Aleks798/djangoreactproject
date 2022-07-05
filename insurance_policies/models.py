@@ -52,22 +52,6 @@ class Risk(models.Model):
         return self.name
 
 
-# InsurancePolicy
-# -
-# InsurancePolicyID PK int
-# Number string INDEX
-# PolicyholderID int FK >- Client.ClientID
-# PolicyownerID int FK >- Client.ClientID
-# ProductID int FK >- Product.ProductID
-# InsuranceCompanyID int FK >- InsuranceCompany.InsuranceCompanyID
-# TypeOfInsuranceID int FK >- TypeOfInsurance.TypeOfInsuranceID
-# RegionID int FK >- Region.RegionID
-# RegistrationDate DateTime
-# StartDate DateTime
-# EndDate DateTime
-# InsuranceSum money
-# InsurancePremium money
-
 class Region(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField("Name", max_length=255)
