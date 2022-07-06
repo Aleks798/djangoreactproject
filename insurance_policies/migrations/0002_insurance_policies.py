@@ -9,24 +9,24 @@ from django.db.models.functions import datetime
 
 def create_data(apps, schema_editor):
     # Client
-    Client = apps.get_model('сlients', 'Client')
+    Client = apps.get_model('insurance_policies', 'Client')
     Client(first_name="Client 001", last_name="Client 001", email="сlient001@email.com", phone="00000000",
            address="Client 000 Address").save()
     # Product
-    Product = apps.get_model('products', 'Product')
+    Product = apps.get_model('insurance_policies', 'Product')
     Product(name="Product 001").save()
     # TypeOfInsurance
-    TypeOfInsurance = apps.get_model('type_of_insurances', 'TypeOfInsurance')
+    TypeOfInsurance = apps.get_model('insurance_policies', 'TypeOfInsurance')
     TypeOfInsurance(name="CTP").save()
     # InsuranceCompany
-    InsuranceCompany = apps.get_model('insurance_companies', 'InsuranceCompany')
+    InsuranceCompany = apps.get_model('insurance_policies', 'InsuranceCompany')
     InsuranceCompany(name="Alfa Ins", email="alfa001@email.com", phone="00000000",
            address="Alfa Ins 000 Address").save()
     # Risk
-    Risk = apps.get_model('risks', 'Risk')
+    Risk = apps.get_model('insurance_policies', 'Risk')
     Risk(name="Financial Risk").save()
     # Region
-    Region = apps.get_model('regions', 'Region')
+    Region = apps.get_model('insurance_policies', 'Region')
     Region(name="RU").save()
     # InsurancePolicy
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
@@ -43,10 +43,10 @@ def create_data(apps, schema_editor):
     # description, createdAt
 
     # RiskTable
-    RiskTable = apps.get_model('risk_table', 'RiskTable')
+    RiskTable = apps.get_model('insurance_policies', 'RiskTable')
     RiskTable(insurance_policy=InsurancePolicy.id, risk=Risk.id, insurance_rate=1.00, insurance_premium=1000)
     # PeriodOfInsurance
-    PeriodOfInsurance = apps.get_model('period_of_insurance', 'PeriodOfInsurance')
+    PeriodOfInsurance = apps.get_model('insurance_policies', 'PeriodOfInsurance')
     PeriodOfInsurance(insurance_policy=InsurancePolicy.id, start_date=InsurancePolicy.start_date,
                       end_date=InsurancePolicy.end_date).save()
 
