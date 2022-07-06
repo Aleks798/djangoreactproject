@@ -8,27 +8,28 @@ from django.db.models.functions import datetime
 
 
 def create_data(apps, schema_editor):
-    # Client
+    # create data for Client
     Client = apps.get_model('insurance_policies', 'Client')
     Client(first_name="Client 001", last_name="Client 001", email="сlient001@email.com", phone="00000000",
            address="Client 000 Address").save()
-    # Product
+    # create data for Product
     Product = apps.get_model('insurance_policies', 'Product')
     Product(name="Product 001").save()
-    # TypeOfInsurance
+    # create data for TypeOfInsurance
     TypeOfInsurance = apps.get_model('insurance_policies', 'TypeOfInsurance')
     TypeOfInsurance(name="CTP").save()
-    # InsuranceCompany
+    # create data for InsuranceCompany
     InsuranceCompany = apps.get_model('insurance_policies', 'InsuranceCompany')
     InsuranceCompany(name="Alfa Ins", email="alfa001@email.com", phone="00000000",
            address="Alfa Ins 000 Address").save()
-    # Risk
+    # create data for Risk
     Risk = apps.get_model('insurance_policies', 'Risk')
     Risk(name="Financial Risk").save()
-    # Region
+    # create data for Region
     Region = apps.get_model('insurance_policies', 'Region')
     Region(name="RU").save()
     # InsurancePolicy
+    # Getting object instances for related tables
     # example: department_id = Department.objects.get(password = password, department_name = department_name)
     policy_holder = Client.objects.get(first_name="Client 001", last_name="Client 001", email="сlient001@email.com")
     product = Product.objects.get(name="Product 001")
@@ -37,6 +38,7 @@ def create_data(apps, schema_editor):
     region = Region.objects.get(name="RU")
     risk = Risk.objects.get(name="Financial Risk")
 
+    # create data for InsurancePolicy
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
     InsurancePolicy(number='00000000001', policy_holder=policy_holder, policy_owner=policy_holder,
                     product=product, insurance_company=insurance_company,
@@ -45,6 +47,7 @@ def create_data(apps, schema_editor):
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
                     createdAt=datetime.datetime(2022, 7, 5)).save()
+    # List of attributes for the InsurancePolicy Class
     # number, policy_holder, policy_owner, product, insurance_company,
     # type_Of_insurance, region, registration_date, start_date
     # start_date, end_date, insurance_sum, insurance_premium
@@ -52,10 +55,10 @@ def create_data(apps, schema_editor):
 
     insurance_policy = InsurancePolicy.objects.get(number='00000000001')
 
-    # RiskTable
+    # create data for  RiskTable
     RiskTable = apps.get_model('insurance_policies', 'RiskTable')
     RiskTable(insurance_policy=insurance_policy, risk=risk, insurance_rate=1.00, insurance_premium=1000)
-    # PeriodOfInsurance
+    # create data for PeriodOfInsurance
     PeriodOfInsurance = apps.get_model('insurance_policies', 'PeriodOfInsurance')
     PeriodOfInsurance(insurance_policy=insurance_policy, start_date=insurance_policy.start_date,
                       end_date=insurance_policy.end_date).save()
