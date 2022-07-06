@@ -35,8 +35,7 @@ def create_data(apps, schema_editor):
                     region_id=Region.id, registration_date=datetime.datetime(2022, 7, 5),
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
-                    createdAt=datetime.datetime(2022, 7, 5)
-                    ).save()
+                    createdAt=datetime.datetime(2022, 7, 5)).save()
     # number, policy_holder, policy_owner, product, insurance_company,
     # type_Of_insurance, region, registration_date, start_date
     # start_date, end_date, insurance_sum, insurance_premium
