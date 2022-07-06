@@ -57,8 +57,8 @@ def create_data(apps, schema_editor):
     RiskTable(insurance_policy=insurance_policy, risk=risk, insurance_rate=1.00, insurance_premium=1000)
     # PeriodOfInsurance
     PeriodOfInsurance = apps.get_model('insurance_policies', 'PeriodOfInsurance')
-    PeriodOfInsurance(insurance_policy=insurance_policy, start_date=InsurancePolicy.start_date,
-                      end_date=InsurancePolicy.end_date).save()
+    PeriodOfInsurance(insurance_policy=insurance_policy, start_date=insurance_policy.start_date,
+                      end_date=insurance_policy.end_date).save()
 
 
 class Migration(migrations.Migration):
