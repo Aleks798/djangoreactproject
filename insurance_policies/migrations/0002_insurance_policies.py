@@ -34,11 +34,13 @@ def create_data(apps, schema_editor):
     product_id = Product.objects.get(name="Product 001")
     insurance_company_id = InsuranceCompany.objects.get(name="Alfa Ins", email="alfa001@email.com", phone="00000000")
     type_Of_insurance_id = TypeOfInsurance.objects.get(name="CTP")
+    region_id = Region.objects.get(name="RU")
+    risk_id = Risk.objects.get(name="Financial Risk")
 
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
     InsurancePolicy(number='00000000001', policy_holder_id=policy_holder_id, policy_owner_id=policy_holder_id,
                     product_id=product_id, insurance_company_id=insurance_company_id,
-                    type_Of_insurance_id=type_Of_insurance_id, region=Region,
+                    type_Of_insurance_id=type_Of_insurance_id, region_id=region_id,
                     registration_date=datetime.datetime(2022, 7, 5),
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
@@ -48,12 +50,14 @@ def create_data(apps, schema_editor):
     # start_date, end_date, insurance_sum, insurance_premium
     # description, createdAt
 
+    insurance_policy_id = TypeOfInsurance.objects.get(number='00000000001')
+
     # RiskTable
     RiskTable = apps.get_model('insurance_policies', 'RiskTable')
-    RiskTable(insurance_policy_id=InsurancePolicy.id, risk_id=Risk.id, insurance_rate=1.00, insurance_premium=1000)
+    RiskTable(insurance_policy_id=insurance_policy_id, risk_id=risk_id, insurance_rate=1.00, insurance_premium=1000)
     # PeriodOfInsurance
     PeriodOfInsurance = apps.get_model('insurance_policies', 'PeriodOfInsurance')
-    PeriodOfInsurance(insurance_policy_id=InsurancePolicy.id, start_date=InsurancePolicy.start_date,
+    PeriodOfInsurance(insurance_policy_id=insurance_policy_id, start_date=InsurancePolicy.start_date,
                       end_date=InsurancePolicy.end_date).save()
 
 
