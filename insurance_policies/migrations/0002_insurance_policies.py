@@ -30,9 +30,9 @@ def create_data(apps, schema_editor):
     Region(name="RU").save()
     # InsurancePolicy
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
-    InsurancePolicy(number='00000000001', policy_holder_id=int(Client.id), policy_owner_id=int(Client.id), product_id=int(Product.id),
-                    insurance_company_id=int(InsuranceCompany.id), type_Of_insurance_id=int(TypeOfInsurance.id),
-                    region_id=int(Region.id), registration_date=datetime.datetime(2022, 7, 5),
+    InsurancePolicy(number='00000000001', policy_holder=Client, policy_owner=Client, product=Product,
+                    insurance_company=InsuranceCompany, type_Of_insurance=TypeOfInsurance,
+                    region=Region, registration_date=datetime.datetime(2022, 7, 5),
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
                     createdAt=datetime.datetime(2022, 7, 5)).save()
