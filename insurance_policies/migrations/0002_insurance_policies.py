@@ -29,10 +29,17 @@ def create_data(apps, schema_editor):
     Region = apps.get_model('insurance_policies', 'Region')
     Region(name="RU").save()
     # InsurancePolicy
+    # example: department_id = Department.objects.get(password = password, department_name = department_name)
+    policy_holder_id = Client.objects.get(first_name="Client 001", last_name="Client 001", email="сlient001@email.com")
+    product_id = Product.objects.get(name="Product 001")
+    insurance_company_id = InsuranceCompany.objects.get(name="Alfa Ins", email="alfa001@email.com", phone="00000000")
+    type_Of_insurance_id = TypeOfInsurance.objects.get(name="CTP")
+
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
-    InsurancePolicy(number='00000000001', policy_holder=Client, policy_owner=Client, product=Product,
-                    insurance_company=InsuranceCompany, type_Of_insurance=TypeOfInsurance,
-                    region=Region, registration_date=datetime.datetime(2022, 7, 5),
+    InsurancePolicy(number='00000000001', policy_holder_id=policy_holder_id, policy_owner_id=policy_holder_id,
+                    product_id=product_id, insurance_company_id=insurance_company_id,
+                    type_Of_insurance_id=type_Of_insurance_id, region=Region,
+                    registration_date=datetime.datetime(2022, 7, 5),
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
                     createdAt=datetime.datetime(2022, 7, 5)).save()
