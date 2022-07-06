@@ -30,9 +30,9 @@ def create_data(apps, schema_editor):
     Region(name="RU").save()
     # InsurancePolicy
     InsurancePolicy = apps.get_model('insurance_policies', 'InsurancePolicy')
-    InsurancePolicy(number='00000000001', policy_holder=Client.id, policy_owner=Client.id, product=Product.id,
-                    insurance_company=InsuranceCompany.id, type_Of_insurance=TypeOfInsurance.id,
-                    region=Region.id, registration_date=datetime.datetime(2022, 7, 5),
+    InsurancePolicy(number='00000000001', policy_holder_id=Client.id, policy_owner_id=Client.id, product_id=Product.id,
+                    insurance_company_id=InsuranceCompany.id, type_Of_insurance_id=TypeOfInsurance.id,
+                    region_id=Region.id, registration_date=datetime.datetime(2022, 7, 5),
                     start_date=datetime.datetime(2022, 7, 5), end_date=datetime.datetime(2023, 7, 4, 23, 59, 59),
                     insurance_sum=100000.00, insurance_premium=1000.00, description='Insurance policy',
                     createdAt=datetime.datetime(2022, 7, 5)
@@ -44,10 +44,10 @@ def create_data(apps, schema_editor):
 
     # RiskTable
     RiskTable = apps.get_model('insurance_policies', 'RiskTable')
-    RiskTable(insurance_policy=InsurancePolicy.id, risk=Risk.id, insurance_rate=1.00, insurance_premium=1000)
+    RiskTable(insurance_policy_id=InsurancePolicy.id, risk_id=Risk.id, insurance_rate=1.00, insurance_premium=1000)
     # PeriodOfInsurance
     PeriodOfInsurance = apps.get_model('insurance_policies', 'PeriodOfInsurance')
-    PeriodOfInsurance(insurance_policy=InsurancePolicy.id, start_date=InsurancePolicy.start_date,
+    PeriodOfInsurance(insurance_policy_id=InsurancePolicy.id, start_date=InsurancePolicy.start_date,
                       end_date=InsurancePolicy.end_date).save()
 
 
