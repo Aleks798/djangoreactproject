@@ -50,7 +50,7 @@ def create_data(apps, schema_editor):
     # start_date, end_date, insurance_sum, insurance_premium
     # description, createdAt
 
-    insurance_policy = TypeOfInsurance.objects.get(number='00000000001')
+    insurance_policy = InsurancePolicy.objects.get(number='00000000001')
 
     # RiskTable
     RiskTable = apps.get_model('insurance_policies', 'RiskTable')
