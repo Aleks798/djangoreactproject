@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from insurance_policies import views
+
+# (!) from django.conf.urls import url - django.conf.urls.url() was deprecated in Django 3.0,
+# and is removed in Django 4.0+.
+# The easiest fix is to replace url() with re_path().
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path(r'^api/policies/$', views.policies_list),
+    re_path(r'^api/policies/(?P<pk>[0-9]+)$', views.policies_detail),
 ]
