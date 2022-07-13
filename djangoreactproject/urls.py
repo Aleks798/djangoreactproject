@@ -21,8 +21,22 @@ from insurance_policies import views
 # and is removed in Django 4.0+.
 # The easiest fix is to replace url() with re_path().
 
+# List of classes for current project /at 2022-07-13/
+# Client
+# Product
+# TypeOfInsurance
+# InsuranceCompany
+# Risk
+# Region
+# InsurancePolicy
+# RiskTable
+# PeriodOfInsurance
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/policies/$', views.policies_list),
     re_path(r'^api/policies/(?P<pk>[0-9]+)$', views.policies_detail),
+    re_path(r'^api/clients/$', views.clients_list),
+    re_path(r'^api/clients/(?P<pk>[0-9]+)$', views.clients_detail),
 ]
