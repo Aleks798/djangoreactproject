@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
-//import { Route, Link } from 'react-router-dom'
-import { Route } from 'react-router-dom'
+//import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import  ClientsList from './ClientsList'
 import  ClientCreateUpdate  from './ClientsCreateUpdate'
@@ -25,9 +25,11 @@ const BaseLayout = () => (
       </nav>
 
       <div className="content">
-        <Route path="/clients" exact component={ClientsList} />
-        <Route path="/clients/client/:pk"  component={ClientCreateUpdate} />
-        <Route path="/clients/client/" exact component={ClientCreateUpdate} />
+          <Routes>
+            <Route path="/clients" exact component={ClientsList} />
+            <Route path="/clients/client/:pk"  component={ClientCreateUpdate} />
+            <Route path="/clients/client/" exact component={ClientCreateUpdate} />
+          </Routes>
 
       </div>
 
