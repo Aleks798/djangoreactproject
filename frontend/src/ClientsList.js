@@ -43,8 +43,7 @@ class  ClientsList  extends  Component {
 	render()
 	{
 
-		/*List of attributes for the Client Class
-          fields: id, name, first_name, middle_name, last_name, email, phone, address */
+
 
 		return (
 			<div className="policies--list">
@@ -64,8 +63,7 @@ class  ClientsList  extends  Component {
 					</thead>
 					<tbody>
 
-					/*List of attributes for the Client Class
-					fields: id, name, first_name, middle_name, last_name, email, phone, address */
+
 
 					{this.state.clients.map(c =>
 						<tr key={c.pk}>
