@@ -1,9 +1,22 @@
 
 import  React, { Component } from  'react';
-//import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import ClientsService from "./ClientsService";
 const  clientsService  =  new  ClientsService();
+
+const withRouter = WrappedComponent => props => {
+    const params = useParams();
+    // etc... other react-router-dom v6 hooks
+
+    return (
+        <WrappedComponent
+            {...props}
+            params={params}
+            // etc...
+        />
+    );
+};
 
 class  ClientCreateUpdate  extends  Component {
 
@@ -13,9 +26,10 @@ class  ClientCreateUpdate  extends  Component {
     }
 
     componentDidMount(){
+        const params = this.props.params
        //const params = useParams();
        // const { match: { params } } = this.props;
-        const params = this.props.match.params;
+        //const params = this.props.match.params;
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
@@ -112,5 +126,5 @@ class  ClientCreateUpdate  extends  Component {
         );
     }
 }
-export default ClientCreateUpdate;
+export default withRouter(ClientCreateUpdate);
 
