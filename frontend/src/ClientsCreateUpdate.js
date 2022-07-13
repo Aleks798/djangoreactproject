@@ -34,6 +34,7 @@ class  ClientCreateUpdate  extends  Component {
         {
             clientsService.getClient(params.pk).then((c)=>{
                 this.refs.firstName.value = c.first_name;
+                this.refs.middleName.value = c.middle_name;
                 this.refs.lastName.value = c.last_name;
                 this.refs.email.value = c.email;
                 this.refs.phone.value = c.phone;
@@ -45,7 +46,9 @@ class  ClientCreateUpdate  extends  Component {
     handleCreate() {
         clientsService.createClient(
             {
+                "id": this.refs.firstName.id,
                 "first_name": this.refs.firstName.value,
+                "middle_name": this.refs.middleName.value,
                 "last_name": this.refs.lastName.value,
                 "email": this.refs.email.value,
                 "phone": this.refs.phone.value,
@@ -61,7 +64,9 @@ class  ClientCreateUpdate  extends  Component {
         clientsService.updateClient(
             {
                 "pk": pk,
+                "id": this.refs.firstName.id,
                 "first_name": this.refs.firstName.value,
+                "middle_name": this.refs.middleName.value,
                 "last_name": this.refs.lastName.value,
                 "email": this.refs.email.value,
                 "phone": this.refs.phone.value,
@@ -106,6 +111,10 @@ class  ClientCreateUpdate  extends  Component {
                     <label>
                         Middle name:</label>
                     <input className="form-control" type="text" ref='middle_name'/>
+
+                    <label>
+                        Last name:</label>
+                    <input className="form-control" type="text" ref='last_name_name'/>
 
                     <label>
                         e-mail:</label>
