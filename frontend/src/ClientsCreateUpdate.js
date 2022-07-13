@@ -1,5 +1,6 @@
 
 import  React, { Component } from  'react';
+import { useParams } from 'react-router-dom';
 
 import ClientsService from "./ClientsService";
 const  clientsService  =  new  ClientsService();
@@ -12,7 +13,8 @@ class  ClientCreateUpdate  extends  Component {
     }
 
     componentDidMount(){
-        const { match: { params } } = this.props;
+        const params = useParams();
+       // const { match: { params } } = this.props;
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
