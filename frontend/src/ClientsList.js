@@ -46,7 +46,7 @@ class  ClientsList  extends  Component {
 
 
 		return (
-			<div className="policies--list">
+			<div className="clients--list">
 				<table className="table">
 					<thead key="thead">
 					<tr>
@@ -56,6 +56,7 @@ class  ClientsList  extends  Component {
 						<th>First Name</th>
 						<th>Middle Name</th>
 						<th>Last Name</th>
+						<th>e-mail</th>
 						<th>phone</th>
 						<th>address</th>
 
