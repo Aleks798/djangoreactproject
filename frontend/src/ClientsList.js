@@ -69,6 +69,7 @@ class  ClientsList  extends  Component {
 					{this.state.clients.map(c =>
 						<tr key={c.pk}>
 							<td>{c.pk}  </td>
+							<td>{c.id}  </td>
 							<td>{c.name}</td>
 							<td>{c.first_name}</td>
 							<td>{c.middle_name}</td>
