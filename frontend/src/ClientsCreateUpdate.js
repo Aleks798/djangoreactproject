@@ -41,9 +41,7 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
-                console.log(c);
                 this.id.current = c.id;
-                console.log(this.id.current);
                 this.name.current = c.name;
                 this.first_name.current = c.first_name;
                 this.middle_name.current = c.middle_name;
@@ -60,12 +58,12 @@ class  ClientCreateUpdate  extends  Component {
         clientsService.createClient(
             {
                 "id": this.id.value,
-                "first_name": this.first_name.value,
-                "middle_name": this.middle_name.value,
-                "last_name": this.last_name.value,
-                "email": this.email.value,
-                "phone": this.phone.value,
-                "address": this.address.value
+                "first_name": this.first_name.current,
+                "middle_name": this.middle_name.current,
+                "last_name": this.last_name.current,
+                "email": this.email.current,
+                "phone": this.phone.current,
+                "address": this.address.current
             }).then((result) => {
             alert("Client created!");
         }).catch(() => {
@@ -77,13 +75,13 @@ class  ClientCreateUpdate  extends  Component {
         clientsService.updateClient(
             {
                 "pk": pk,
-                "id": this.id.value,
-                "first_name": this.first_name.value,
-                "middle_name": this.middle_name.value,
-                "last_name": this.last_name.value,
-                "email": this.email.value,
-                "phone": this.phone.value,
-                "address": this.address.value
+                "id": this.id.current,
+                "first_name": this.first_name.current,
+                "middle_name": this.middle_name.current,
+                "last_name": this.last_name.current,
+                "email": this.email.current,
+                "phone": this.phone.current,
+                "address": this.address.current
 
             }
         ).then((result)=>{
@@ -96,6 +94,9 @@ class  ClientCreateUpdate  extends  Component {
 
     handleSubmit(event) {
         const { match: { params } } =  this.props;
+
+        console.log(params);
+
         if(params  &&  params.pk){
             this.handleUpdate(params.pk);
         }
@@ -116,35 +117,35 @@ class  ClientCreateUpdate  extends  Component {
 
                     <label>
                         Id:</label>
-                    <input className="form-control" type="text" ref={this.id}/>
+                    <input className="form-control" type="text" ref={this.id} value={this.id.current} />
 
                     <label>
                         Name:</label>
-                    <input className="form-control" type="text" ref={this.name}/>
+                    <input className="form-control" type="text" ref={this.name} value={this.name.current} />
 
                     <label>
                         First name:</label>
-                    <input className="form-control" type="text" ref={this.first_name}/>
+                    <input className="form-control" type="text" ref={this.first_name} value={this.first_name.current} />
 
                     <label>
                         Middle name:</label>
-                    <input className="form-control" type="text" ref={this.middle_name}/>
+                    <input className="form-control" type="text" ref={this.middle_name} value={this.middle_name.current} />
 
                     <label>
                         Last name:</label>
-                    <input className="form-control" type="text" ref={this.last_name}/>
+                    <input className="form-control" type="text" ref={this.last_name} value={this.last_name.current} />
 
                     <label>
                         e-mail:</label>
-                    <input className="form-control" type="text" ref={this.email}/>
+                    <input className="form-control" type="text" ref={this.email} value={this.email.current} />
 
                     <label>
                         Phone:</label>
-                    <input className="form-control" type="text" ref={this.phone}/>
+                    <input className="form-control" type="text" ref={this.phone} value={this.phone.current} />
 
                     <label>
                         Address:</label>
-                    <textarea className="form-control" ref={this.address}></textarea>
+                    <textarea className="form-control" ref={this.address} value={this.address.current} ></textarea>
 
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
