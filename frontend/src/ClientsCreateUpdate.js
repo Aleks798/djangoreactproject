@@ -23,6 +23,14 @@ class  ClientCreateUpdate  extends  Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.id= React.createRef();
+        this.name= React.createRef();
+        this.first_name= React.createRef();
+        this.middle_name= React.createRef();
+        this.last_name= React.createRef();
+        this.email= React.createRef();
+        this.phone= React.createRef();
+        this.address= React.createRef();
     }
 
     componentDidMount(){
@@ -33,26 +41,28 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
-                this.refs.firstName.value = c.first_name;
-                this.refs.middleName.value = c.middle_name;
-                this.refs.lastName.value = c.last_name;
-                this.refs.email.value = c.email;
-                this.refs.phone.value = c.phone;
-                this.refs.address.value = c.address;
+                this.name.value = c.name;
+                this.first_name.value = c.first_name;
+                this.middle_name.value = c.middle_name;
+                this.last_name.value = c.last_name;
+                this.email.value = c.email;
+                this.phone.value = c.phone;
+                this.address.value = c.address;
             })
         }
     }
 
     handleCreate() {
+        console.log('handleCreate method start');
         clientsService.createClient(
             {
-                "id": this.refs.firstName.id,
-                "first_name": this.refs.firstName.value,
-                "middle_name": this.refs.middleName.value,
-                "last_name": this.refs.lastName.value,
-                "email": this.refs.email.value,
-                "phone": this.refs.phone.value,
-                "address": this.refs.address.value
+                //"id": this.firstName.id,
+                "first_name": this.first_name.value,
+                "middle_name": this.middle_name.value,
+                "last_name": this.last_name.value,
+                "email": this.email.value,
+                "phone": this.phone.value,
+                "address": this.address.value
             }).then((result) => {
             alert("Client created!");
         }).catch(() => {
@@ -64,13 +74,13 @@ class  ClientCreateUpdate  extends  Component {
         clientsService.updateClient(
             {
                 "pk": pk,
-                "id": this.refs.firstName.id,
-                "first_name": this.refs.firstName.value,
-                "middle_name": this.refs.middleName.value,
-                "last_name": this.refs.lastName.value,
-                "email": this.refs.email.value,
-                "phone": this.refs.phone.value,
-                "address": this.refs.address.value
+                "id": this.id.value,
+                "first_name": this.first_name.value,
+                "middle_name": this.middle_name.value,
+                "last_name": this.last_name.value,
+                "email": this.email.value,
+                "phone": this.phone.value,
+                "address": this.address.value
 
             }
         ).then((result)=>{
@@ -100,33 +110,38 @@ class  ClientCreateUpdate  extends  Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
+
+                    <label>
+                        Id:</label>
+                    <input className="form-control" type="text" ref={this.id}/>
+
                     <label>
                         Name:</label>
-                    <input className="form-control" type="text" ref='name'/>
+                    <input className="form-control" type="text" ref={this.name}/>
 
                     <label>
                         First name:</label>
-                    <input className="form-control" type="text" ref='first_name'/>
+                    <input className="form-control" type="text" ref={this.first_name}/>
 
                     <label>
                         Middle name:</label>
-                    <input className="form-control" type="text" ref='middle_name'/>
+                    <input className="form-control" type="text" ref={this.middle_name}/>
 
                     <label>
                         Last name:</label>
-                    <input className="form-control" type="text" ref='last_name_name'/>
+                    <input className="form-control" type="text" ref={this.last_name}/>
 
                     <label>
                         e-mail:</label>
-                    <input className="form-control" type="text" ref='email'/>
+                    <input className="form-control" type="text" ref={this.email}/>
 
                     <label>
                         Phone:</label>
-                    <input className="form-control" type="text" ref='phone'/>
+                    <input className="form-control" type="text" ref={this.phone}/>
 
                     <label>
                         Address:</label>
-                    <textarea className="form-control" ref='address'></textarea>
+                    <textarea className="form-control" ref={this.address}></textarea>
 
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
