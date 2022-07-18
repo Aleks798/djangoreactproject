@@ -92,6 +92,7 @@ class  ClientCreateUpdate  extends  Component {
         console.log(this.state);
         clientsService.createClient(
             {
+                "pk": this.state.id,
                 "id": this.state.id,
                 "first_name": this.state.first_name,
                 "middle_name": this.state.middle_name,
