@@ -44,6 +44,9 @@ class  ClientCreateUpdate  extends  Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
+        console.log('handleInputChange(event): name: ' + name);
+        console.log('handleInputChange(event): value: ' + value);
+
         this.setState({
             [name]: value
         });
