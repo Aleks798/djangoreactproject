@@ -117,35 +117,35 @@ class  ClientCreateUpdate  extends  Component {
 
                     <label>
                         Id:</label>
-                    <input className="form-control" type="text" ref={this.id} value={this.id.current} />
+                    <input className="form-control" type="text" ref={this.id}  >{this.id.current}</input>
 
                     <label>
                         Name:</label>
-                    <input className="form-control" type="text" ref={this.name} value={this.name.current} />
+                    <input className="form-control" type="text" ref={this.name} >{this.name.current}</input>
 
                     <label>
                         First name:</label>
-                    <input className="form-control" type="text" ref={this.first_name} value={this.first_name.current} />
+                    <input className="form-control" type="text" ref={this.first_name} >{this.first_name.current}</input>
 
                     <label>
                         Middle name:</label>
-                    <input className="form-control" type="text" ref={this.middle_name} value={this.middle_name.current} />
+                    <input className="form-control" type="text" ref={this.middle_name} >{this.middle_name.current}</input>
 
                     <label>
                         Last name:</label>
-                    <input className="form-control" type="text" ref={this.last_name} value={this.last_name.current} />
+                    <input className="form-control" type="text" ref={this.last_name} >{this.last_name.current}</input>
 
                     <label>
                         e-mail:</label>
-                    <input className="form-control" type="text" ref={this.email} value={this.email.current} />
+                    <input className="form-control" type="text" ref={this.email} >{this.email.current}</input>
 
                     <label>
                         Phone:</label>
-                    <input className="form-control" type="text" ref={this.phone} value={this.phone.current} />
+                    <input className="form-control" type="text" ref={this.phone} >{this.phone.current}</input>
 
                     <label>
                         Address:</label>
-                    <textarea className="form-control" ref={this.address} value={this.address.current} ></textarea>
+                    <textarea className="form-control" ref={this.address} >{this.address.current}</textarea>
 
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
