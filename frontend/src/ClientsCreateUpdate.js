@@ -140,20 +140,20 @@ class  ClientCreateUpdate  extends  Component {
     }
 
     handleSubmit001() {
-
+        console.log('handleSubmit001()');
         //console.log('handleSubmit001(event)');
         //console.log(this.state);
 
-        if(this.state.id === ''){
-            this.handleUpdate(this.state.id);
-            console.log('handleSubmit(event): this.handleUpdate(params.pk);');
-        }
-        else
-        {
-            this.handleCreate();
-            console.log('handleSubmit(event): this.handleCreate();');
-        }
-    }
+       // if(this.state.id === ''){
+       //     this.handleUpdate(this.state.id);
+       //     console.log('handleSubmit(event): this.handleUpdate(params.pk);');
+       // }
+ //        else
+ //        {
+ //            this.handleCreate();
+ //            console.log('handleSubmit(event): this.handleCreate();');
+ //        }
+ //    }
 
 /*List of attributes for the Client Class
   fields: id, name, first_name, middle_name, last_name, email, phone, address */
