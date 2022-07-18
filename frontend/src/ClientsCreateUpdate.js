@@ -44,6 +44,7 @@ class  ClientCreateUpdate  extends  Component {
 
     handleFormSubmit(event){
         event.preventDefault();
+        console.log(' handleFormSubmit(event)');
     };
 
     handleInputChange(event) {
