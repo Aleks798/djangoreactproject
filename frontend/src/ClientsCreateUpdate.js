@@ -44,7 +44,7 @@ class  ClientCreateUpdate  extends  Component {
 
     handleFormSubmit(event){
         event.preventDefault();
-        console.log(' handleFormSubmit(event)');
+        //console.log(' handleFormSubmit(event)');
     };
 
     handleInputChange(event) {
@@ -89,6 +89,7 @@ class  ClientCreateUpdate  extends  Component {
 
     handleCreate() {
         console.log('handleCreate method start');
+        console.log(this.state);
         clientsService.createClient(
             {
                 "id": this.state.id,
@@ -146,8 +147,8 @@ class  ClientCreateUpdate  extends  Component {
     // }
 
     handleSubmit(event) {
-        console.log('handleSubmit001()');
-        console.log('handleSubmit001(event)');
+        console.log('handleSubmit()');
+        console.log('handleSubmit(event)');
         console.log(this.state);
 
        if(this.state.id === ''){
