@@ -143,35 +143,35 @@ class  ClientCreateUpdate  extends  Component {
                     </h3>
                     <label>
                         Id:</label>
-                    <input name="id" className="form-control" type="text" value={this.state.id}  />
+                    <input name="id" className="form-control" type="text" value={this.state.id}  onChange={this.handleInputChange} />
 
                     <label>
                         Name:</label>
-                    <input name="name" className="form-control" type="text" value={this.state.name} />
+                    <input name="name" className="form-control" type="text" value={this.state.name} onChange={this.handleInputChange} />
 
                     <label>
                         First name:</label>
-                    <input name="first_name" className="form-control" type="text" value={this.state.first_name} />
+                    <input name="first_name" className="form-control" type="text" value={this.state.first_name} onChange={this.handleInputChange} />
 
                     <label>
                         Middle name:</label>
-                    <input name="middle_name" className="form-control" type="text" value={this.state.middle_name} />
+                    <input name="middle_name" className="form-control" type="text" value={this.state.middle_name} onChange={this.handleInputChange} />
 
                     <label>
                         Last name:</label>
-                    <input name="last_name" className="form-control" type="text" value={this.state.last_name} />
+                    <input name="last_name" className="form-control" type="text" value={this.state.last_name} onChange={this.handleInputChange} />
 
                     <label>
                         e-mail:</label>
-                    <input name="email" className="form-control" type="text" value={this.state.email} />
+                    <input name="email" className="form-control" type="text" value={this.state.email} onChange={this.handleInputChange} />
 
                     <label>
                         Phone:</label>
-                    <input name="phone" className="form-control" type="text" value={this.state.phone} />
+                    <input name="phone" className="form-control" type="text" value={this.state.phone} onChange={this.handleInputChange} />
 
                     <label>
                         Address:</label>
-                    <textarea name="address" className="form-control" value={this.state.address} />
+                    <textarea name="address" className="form-control" value={this.state.address} onChange={this.handleInputChange} />
 
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
