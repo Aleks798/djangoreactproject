@@ -5,6 +5,7 @@ from rest_framework import status
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import InsurancePolicy
+from .models import Client
 from .serializers import *
 
 
