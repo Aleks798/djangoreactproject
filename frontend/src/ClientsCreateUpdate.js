@@ -38,7 +38,7 @@ class  ClientCreateUpdate  extends  Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit001 = this.handleSubmit001.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
