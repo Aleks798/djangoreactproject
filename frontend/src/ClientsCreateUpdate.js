@@ -181,8 +181,8 @@ class  ClientCreateUpdate  extends  Component {
                         Address:</label>
                     <textarea name="address" className="form-control" value={this.state.address} onChange={this.handleInputChange} />
 
-
-                    <input className="btn btn-primary" value="Submit" onCilck={this.handleSubmit} />
+                    <button name="btn btn-primary" onClick={this.handleSubmit} />
+                    {/*<input className="btn btn-primary" value="Submit" onCilck={this.handleSubmit} />*/}
                 </div>
             </form>
         );
