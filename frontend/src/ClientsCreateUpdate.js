@@ -64,7 +64,7 @@ class  ClientCreateUpdate  extends  Component {
                 //this.setState(...c);
                 this.setState('id', c.id);
                 this.setState('first_name', c.first_name);
-                this.setState('middle_name', c.middle_name;
+                this.setState('middle_name', c.middle_name);
                 this.setState('last_name', c.last_name);
                 this.setState('email', c.email);
                 this.setState('phone', c.phone);
