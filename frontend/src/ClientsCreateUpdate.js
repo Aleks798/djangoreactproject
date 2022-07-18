@@ -139,6 +139,22 @@ class  ClientCreateUpdate  extends  Component {
         event.preventDefault();
     }
 
+    handleSubmit001() {
+
+        console.log('handleSubmit001(event)');
+        console.log(params);
+
+        if(this.state.id === ''){
+            this.handleUpdate(this.state.id);
+            console.log('handleSubmit(event): this.handleUpdate(params.pk);');
+        }
+        else
+        {
+            this.handleCreate();
+            console.log('handleSubmit(event): this.handleCreate();');
+        }
+    }
+
 /*List of attributes for the Client Class
   fields: id, name, first_name, middle_name, last_name, email, phone, address */
 
@@ -181,7 +197,7 @@ class  ClientCreateUpdate  extends  Component {
                         Address:</label>
                     <textarea name="address" className="form-control" value={this.state.address} onChange={this.handleInputChange} />
 
-                    <button name="btn btn-primary" onClick={this.handleSubmit} >Save</button>
+                    <button name="btn btn-primary" onClick={this.handleSubmit001}>Save</button>
                     {/*<input className="btn btn-primary" value="Submit" onCilck={this.handleSubmit} />*/}
                 </div>
             </form>
