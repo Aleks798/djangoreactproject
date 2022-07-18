@@ -153,7 +153,7 @@ class  ClientCreateUpdate  extends  Component {
  //            this.handleCreate();
  //            console.log('handleSubmit(event): this.handleCreate();');
  //        }
- //    }
+     }
 
 /*List of attributes for the Client Class
   fields: id, name, first_name, middle_name, last_name, email, phone, address */
