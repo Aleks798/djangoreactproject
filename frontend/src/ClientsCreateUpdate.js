@@ -142,7 +142,7 @@ class  ClientCreateUpdate  extends  Component {
     handleSubmit001() {
 
         console.log('handleSubmit001(event)');
-        console.log(params);
+        console.log(this.state);
 
         if(this.state.id === ''){
             this.handleUpdate(this.state.id);
