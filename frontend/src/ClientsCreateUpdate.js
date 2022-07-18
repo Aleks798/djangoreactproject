@@ -133,7 +133,7 @@ class  ClientCreateUpdate  extends  Component {
         console.log('handleSubmit(event)');
         console.log(this.state);
 
-       if(String(this.state.id) === !''){
+       if(this.state.id !== 0){
            this.handleUpdate(this.state.id);
            console.log('handleSubmit(event): this.handleUpdate(params.pk);');
        }
@@ -156,7 +156,7 @@ class  ClientCreateUpdate  extends  Component {
                     </h3>
                     <label>
                         Id:</label>
-                    <input name="id" className="form-control" type="text" value={this.state.id}  onChange={this.handleInputChange} />
+                    <input name="id" className="form-control" type="number" value={this.state.id}  onChange={this.handleInputChange} />
 
                     <label>
                         Name:</label>
