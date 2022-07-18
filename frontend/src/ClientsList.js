@@ -79,7 +79,7 @@ class  ClientsList  extends  Component {
 							<td>{c.address}</td>
 							<td>
 								<button onClick={(e) => this.handleDelete(e, c.pk)}> Delete</button>
-								<a href={"/clients/" + c.pk}> Update</a>
+								<a href={"/clients/client/" + c.pk}> Update</a>
 							</td>
 						</tr>)}
 					</tbody>

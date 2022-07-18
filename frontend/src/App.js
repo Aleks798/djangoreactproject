@@ -28,7 +28,7 @@ const BaseLayout = () => (
           <Routes>
             <Route path="/clients" exact element={ <ClientsList/> } />
             <Route path="/clients/client/:pk"  element={ <ClientCreateUpdate/> } />
-            <Route path="/clients/client/" exact element={ <ClientCreateUpdate/> } />
+            <Route path="/clients/client" exact element={ <ClientCreateUpdate/> } />
           </Routes>
 
       </div>
