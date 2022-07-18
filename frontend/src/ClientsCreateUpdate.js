@@ -41,14 +41,14 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
-                this.id.value = c.id;
-                this.name.value = c.name;
-                this.first_name.value = c.first_name;
-                this.middle_name.value = c.middle_name;
-                this.last_name.value = c.last_name;
-                this.email.value = c.email;
-                this.phone.value = c.phone;
-                this.address.value = c.address;
+                this.id.current = c.id;
+                this.name.current = c.name;
+                this.first_name.current = c.first_name;
+                this.middle_name.current = c.middle_name;
+                this.last_name.current = c.last_name;
+                this.email.current = c.email;
+                this.phone.current = c.phone;
+                this.address.current = c.address;
             })
         }
     }
