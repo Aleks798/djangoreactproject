@@ -22,6 +22,9 @@ class  ClientCreateUpdate  extends  Component {
 
     constructor(props) {
         super(props);
+        console.log('class  ClientCreateUpdate()');
+        console.log(props);
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.id= React.createRef();
         this.name= React.createRef();
@@ -41,6 +44,8 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
+                console.log('componentDidMount(): clientsService.getClient():');
+                console.log(params);
                 this.id.current = c.id;
                 this.name.current = c.name;
                 this.first_name.current = c.first_name;
@@ -72,6 +77,7 @@ class  ClientCreateUpdate  extends  Component {
     }
 
     handleUpdate(pk){
+        console.log('handleUpdate('+pk+')');
         clientsService.updateClient(
             {
                 "pk": pk,
