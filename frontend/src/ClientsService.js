@@ -30,6 +30,7 @@ export default class ClientsService{
 	updateClient(client){
 		const url = `${API_URL}/api/clients/${client.pk}`;
 		console.log('url ='+url);
+		console.log(client);
 		return axios.put(url,client);
 	}
 }
