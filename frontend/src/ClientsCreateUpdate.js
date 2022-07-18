@@ -42,6 +42,10 @@ class  ClientCreateUpdate  extends  Component {
 
     }
 
+    handleFormSubmit(event){
+        event.preventDefault();
+    };
+
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -161,7 +165,7 @@ class  ClientCreateUpdate  extends  Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleFormSubmit}>
                 <div className="form-group">
                     <h3>
                         Client: {this.state.name}
@@ -198,7 +202,7 @@ class  ClientCreateUpdate  extends  Component {
                         Address:</label>
                     <textarea name="address" className="form-control" value={this.state.address} onChange={this.handleInputChange} />
 
-                    <button name="btn btn-primary" onClick={this.handleSubmit001}>Save</button>
+                    <button name="btn btn-primary" onClick={this.handleSubmit}>Save</button>
                     {/*<input className="btn btn-primary" value="Submit" onCilck={this.handleSubmit} />*/}
                 </div>
             </form>
