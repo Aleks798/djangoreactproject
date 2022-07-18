@@ -61,7 +61,7 @@ class  ClientCreateUpdate  extends  Component {
         {
             clientsService.getClient(params.pk).then((c)=>{
 
-                this.state = {
+                this.setState( {
                     id: c.id,
                     name: c.first_name,
                     first_name: c.first_name,
@@ -71,7 +71,7 @@ class  ClientCreateUpdate  extends  Component {
                     phone:  c.phone,
                     address: c.address,
 
-                }
+                });
             })
         }
     }
