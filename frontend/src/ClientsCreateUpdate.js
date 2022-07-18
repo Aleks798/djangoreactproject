@@ -41,7 +41,9 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
+                console.log(c);
                 this.id.current = c.id;
+                console.log(this.id.current);
                 this.name.current = c.name;
                 this.first_name.current = c.first_name;
                 this.middle_name.current = c.middle_name;
