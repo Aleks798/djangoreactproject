@@ -19,5 +19,5 @@ class InsurancePolicySerializer(serializers.ModelSerializer):
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ('id', 'name', 'first_name', 'middle_name', 'last_name', 'email',
+        fields = ('pk', 'id', 'name', 'first_name', 'middle_name', 'last_name', 'email',
                   'phone', 'address')
