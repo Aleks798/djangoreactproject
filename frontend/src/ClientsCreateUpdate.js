@@ -38,7 +38,7 @@ class  ClientCreateUpdate  extends  Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit001 = this.handleSubmit001.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
@@ -127,25 +127,25 @@ class  ClientCreateUpdate  extends  Component {
         });
     }
 
+    // handleSubmit(event) {
+    //     const { match: { params } } =  this.props;
+    //
+    //     console.log('handleSubmit(event)');
+    //     console.log(params);
+    //
+    //     if(params  &&  params.pk){
+    //         this.handleUpdate(params.pk);
+    //         console.log('handleSubmit(event): this.handleUpdate(params.pk);');
+    //     }
+    //     else
+    //     {
+    //         this.handleCreate();
+    //         console.log('handleSubmit(event): this.handleCreate();');
+    //     }
+    //     event.preventDefault();
+    // }
+
     handleSubmit(event) {
-        const { match: { params } } =  this.props;
-
-        console.log('handleSubmit(event)');
-        console.log(params);
-
-        if(params  &&  params.pk){
-            this.handleUpdate(params.pk);
-            console.log('handleSubmit(event): this.handleUpdate(params.pk);');
-        }
-        else
-        {
-            this.handleCreate();
-            console.log('handleSubmit(event): this.handleCreate();');
-        }
-        event.preventDefault();
-    }
-
-    handleSubmit001(event) {
         console.log('handleSubmit001()');
         console.log('handleSubmit001(event)');
         console.log(this.state);
@@ -203,7 +203,7 @@ class  ClientCreateUpdate  extends  Component {
                         Address:</label>
                     <textarea name="address" className="form-control" value={this.state.address} onChange={this.handleInputChange} />
 
-                    <button name="btn btn-primary" onClick={this.handleSubmit001}>Save</button>
+                    <button name="btn btn-primary" onClick={this.handleSubmit}>Save</button>
                     {/*<input className="btn btn-primary" value="Submit" onCilck={this.handleSubmit} />*/}
                 </div>
             </form>
