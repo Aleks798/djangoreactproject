@@ -38,6 +38,7 @@ class  ClientCreateUpdate  extends  Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit001 = this.handleSubmit001.bind(this);
 
     }
 
@@ -46,8 +47,8 @@ class  ClientCreateUpdate  extends  Component {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        console.log('handleInputChange(event): name: ' + name);
-        console.log('handleInputChange(event): value: ' + value);
+        //console.log('handleInputChange(event): name: ' + name);
+        //console.log('handleInputChange(event): value: ' + value);
 
         this.setState({
             [name]: value
