@@ -22,8 +22,8 @@ class  ClientCreateUpdate  extends  Component {
 
     constructor(props) {
         super(props);
-        console.log('class  ClientCreateUpdate()');
-        console.log(props);
+        //console.log('class  ClientCreateUpdate()');
+        //console.log(props);
 
         this.state = {
             id: 0,
@@ -36,6 +36,8 @@ class  ClientCreateUpdate  extends  Component {
             address: '',
 
         }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
 
     }
 
@@ -55,8 +57,8 @@ class  ClientCreateUpdate  extends  Component {
     componentDidMount(){
         const params = this.props.params;
 
-        console.log('componentDidMount():');
-        console.log(this.props);
+        //console.log('componentDidMount():');
+        //console.log(this.props);
        //const params = useParams();
        // const { match: { params } } = this.props;
         //const params = this.props.match.params;
