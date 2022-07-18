@@ -61,15 +61,17 @@ class  ClientCreateUpdate  extends  Component {
         {
             clientsService.getClient(params.pk).then((c)=>{
 
-                //this.setState(...c);
-                this.setState('id', c.id);
-                this.setState('first_name', c.first_name);
-                this.setState('middle_name', c.middle_name);
-                this.setState('last_name', c.last_name);
-                this.setState('email', c.email);
-                this.setState('phone', c.phone);
-                this.setState('address', c.address);
+                this.state = {
+                    id: c.id,
+                    name: c.first_name,
+                    first_name: c.first_name,
+                    middle_name: c.middle_name,
+                    last_name: c.last_name,
+                    email: c.email,
+                    phone:  c.phone,
+                    address: c.address,
 
+                }
             })
         }
     }
