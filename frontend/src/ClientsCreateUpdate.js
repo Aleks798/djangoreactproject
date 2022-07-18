@@ -124,14 +124,17 @@ class  ClientCreateUpdate  extends  Component {
     handleSubmit(event) {
         const { match: { params } } =  this.props;
 
+        console.log('handleSubmit(event)');
         console.log(params);
 
         if(params  &&  params.pk){
             this.handleUpdate(params.pk);
+            console.log('handleSubmit(event): this.handleUpdate(params.pk);');
         }
         else
         {
             this.handleCreate();
+            console.log('handleSubmit(event): this.handleCreate();');
         }
         event.preventDefault();
     }
