@@ -138,17 +138,9 @@ class  ClientCreateUpdate  extends  Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-
                     <h3>
-                        {this.state.id}
-
+                        Client: {this.state.name}
                     </h3>
-
-                    <h3>
-
-                        {this.state.name}
-                    </h3>
-
                     <label>
                         Id:</label>
                     <input name="id" className="form-control" type="text" value={this.state.id}  />
