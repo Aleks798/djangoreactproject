@@ -37,7 +37,7 @@ class  ClientCreateUpdate  extends  Component {
     }
 
     componentDidMount(){
-        const params = this.props.params
+        const params = this.props.params;
 
         console.log('componentDidMount():');
         console.log(this.props);
