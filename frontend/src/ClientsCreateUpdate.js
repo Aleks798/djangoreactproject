@@ -25,15 +25,28 @@ class  ClientCreateUpdate  extends  Component {
         console.log('class  ClientCreateUpdate()');
         console.log(props);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.id= React.createRef();
-        this.name= React.createRef();
-        this.first_name= React.createRef();
-        this.middle_name= React.createRef();
-        this.last_name= React.createRef();
-        this.email= React.createRef();
-        this.phone= React.createRef();
-        this.address= React.createRef();
+        this.state = {
+            id: 0,
+            name: '',
+            first_name: '',
+            middle_name: '',
+            last_name: '',
+            email: '',
+            phone: '',
+            address: '',
+
+        }
+
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     componentDidMount(){
@@ -47,16 +60,11 @@ class  ClientCreateUpdate  extends  Component {
         if(params && params.pk)
         {
             clientsService.getClient(params.pk).then((c)=>{
-                console.log('componentDidMount(): clientsService.getClient():');
-                console.log(params);
-                this.id.current = c.id;
-                this.name.current = c.name;
-                this.first_name.current = c.first_name;
-                this.middle_name.current = c.middle_name;
-                this.last_name.current = c.last_name;
-                this.email.current = c.email;
-                this.phone.current = c.phone;
-                this.address.current = c.address;
+
+                this.setState(...c);
+                console.log('this.state:');
+                console.log(this.state);
+
             })
         }
     }
@@ -65,13 +73,13 @@ class  ClientCreateUpdate  extends  Component {
         console.log('handleCreate method start');
         clientsService.createClient(
             {
-                "id": this.id.value,
-                "first_name": this.first_name.current,
-                "middle_name": this.middle_name.current,
-                "last_name": this.last_name.current,
-                "email": this.email.current,
-                "phone": this.phone.current,
-                "address": this.address.current
+                "id": this.state.id,
+                "first_name": this.state.first_name,
+                "middle_name": this.state.middle_name,
+                "last_name": this.state.last_name,
+                "email": this.state.email,
+                "phone": this.state.phone,
+                "address": this.state.address
             }).then((result) => {
             alert("Client created!");
         }).catch(() => {
@@ -84,13 +92,13 @@ class  ClientCreateUpdate  extends  Component {
         clientsService.updateClient(
             {
                 "pk": pk,
-                "id": this.id.current,
-                "first_name": this.first_name.current,
-                "middle_name": this.middle_name.current,
-                "last_name": this.last_name.current,
-                "email": this.email.current,
-                "phone": this.phone.current,
-                "address": this.address.current
+                "id": this.state.id,
+                "first_name": this.state.first_name,
+                "middle_name": this.state.middle_name,
+                "last_name": this.state.last_name,
+                "email": this.state.email,
+                "phone": this.state.phone,
+                "address": this.state.address
 
             }
         ).then((result)=>{
@@ -125,46 +133,46 @@ class  ClientCreateUpdate  extends  Component {
                 <div className="form-group">
 
                     <h3>
-                        {this.id.current}
+                        {this.state.id}
 
                     </h3>
 
                     <h3>
 
-                        {this.name.current}
+                        {this.state.name}
                     </h3>
 
                     <label>
                         Id:</label>
-                    <input className="form-control" type="text" ref={this.id}  >{this.id.current}</input>
+                    <input name="id" className="form-control" type="text" value={this.state.id}  />
 
                     <label>
                         Name:</label>
-                    <input className="form-control" type="text" ref={this.name} >{this.name.current}</input>
+                    <input name="name" className="form-control" type="text" value={this.state.name} />
 
                     <label>
                         First name:</label>
-                    <input className="form-control" type="text" ref={this.first_name} >{this.first_name.current}</input>
+                    <input name="first_name" className="form-control" type="text" value={this.state.first_name} />
 
                     <label>
                         Middle name:</label>
-                    <input className="form-control" type="text" ref={this.middle_name} >{this.middle_name.current}</input>
+                    <input name="middle_name" className="form-control" type="text" value={this.state.middle_name} />
 
                     <label>
                         Last name:</label>
-                    <input className="form-control" type="text" ref={this.last_name} >{this.last_name.current}</input>
+                    <input name="last_name" className="form-control" type="text" value={this.state.last_name} />
 
                     <label>
                         e-mail:</label>
-                    <input className="form-control" type="text" ref={this.email} >{this.email.current}</input>
+                    <input name="email" className="form-control" type="text" value={this.state.email} />
 
                     <label>
                         Phone:</label>
-                    <input className="form-control" type="text" ref={this.phone} >{this.phone.current}</input>
+                    <input name="phone" className="form-control" type="text" value={this.state.phone} />
 
                     <label>
                         Address:</label>
-                    <textarea className="form-control" ref={this.address} >{this.address.current}</textarea>
+                    <textarea name="address" className="form-control" value={this.state.address} />
 
 
                     <input className="btn btn-primary" type="submit" value="Submit"/>
