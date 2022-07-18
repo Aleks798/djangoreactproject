@@ -124,6 +124,16 @@ class  ClientCreateUpdate  extends  Component {
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
 
+                    <h3>
+                        {this.id.current}
+
+                    </h3>
+
+                    <h3>
+
+                        {this.name.current}
+                    </h3>
+
                     <label>
                         Id:</label>
                     <input className="form-control" type="text" ref={this.id}  >{this.id.current}</input>
