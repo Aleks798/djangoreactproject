@@ -25,12 +25,14 @@ export default class ClientsService{
 	}
 	createClient(client){
 		const url = `${API_URL}/api/clients/`;
-		return axios.post(url,{headers: {"Access-Control-Allow-Origin": "*"}},client);
+		const config = {headers: {"Access-Control-Allow-Origin": "*"}};
+		return axios.post(url, client, config);
 	}
 	updateClient(client){
 		const url = `${API_URL}/api/clients/${client.pk}`;
-		console.log('url ='+url);
+		console.log('updateClient(client): url ='+url);
 		console.log(client);
-		return axios.put(url,{headers: {"Access-Control-Allow-Origin": "*"}},client);
+		const config = {headers: {"Access-Control-Allow-Origin": "*"}};
+		return axios.put(url, client, config);
 	}
 }
