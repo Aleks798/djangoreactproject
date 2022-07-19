@@ -70,8 +70,8 @@ MIDDLEWARE = [
 #     'http://192.168.56.102:3000/*',
 # ]
 
-CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+# CORS_ALLOW_CREDENTIALS = True
 
 
 # CORS_ORIGIN_ALLOW_ALL = False
@@ -85,18 +85,18 @@ CORS_ORIGIN_ALLOW_ALL = True
 #         'http://192.168.56.102:8000/',
 # )
 
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-    "Access-Control-Allow-Origin",
-]
+# CORS_ALLOW_HEADERS = [
+#     "accept",
+#     "accept-encoding",
+#     "authorization",
+#     "content-type",
+#     "dnt",
+#     "origin",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+#     "Access-Control-Allow-Origin",
+# ]
 
 ROOT_URLCONF = 'djangoreactproject.urls'
 
