@@ -7,12 +7,11 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 # fieds: id, name, first_name, middle_name, last_name, email, phone, address
 def validate_email(value):
-    pass
-#     if len(value) > 6:
-#         if re.match('/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i', value) == None:
-#             raise ValidationError(
-#                 _('%(value) is Wrong email'),
-#                 params={'value': value},)
+    if len(value) > 6:
+        if re.match('([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+', value) == None:
+            raise ValidationError(
+                _('%(value) is Wrong email'),
+                params={'value': value},)
 
 
 class Client(models.Model):
