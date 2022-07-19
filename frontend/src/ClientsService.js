@@ -29,7 +29,7 @@ export default class ClientsService{
 		return axios.post(url, client, config);
 	}
 	updateClient(client){
-		const url = `${API_URL}/api/clients/${client.pk}`;
+		const url = `${API_URL}/api/clients/${client.pk}/`;
 		console.log('updateClient(client): url ='+url);
 		console.log(client);
 		const config = {headers: {"Access-Control-Allow-Origin": "*"}};
