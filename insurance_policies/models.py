@@ -6,7 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 # fieds: id, name, first_name, middle_name, last_name, email, phone, address
-# def validate_email(value):
+def validate_email(value):
+    pass
 #     if len(value) > 6:
 #         if re.match('/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i', value) == None:
 #             raise ValidationError(
@@ -20,8 +21,8 @@ class Client(models.Model):
     first_name = models.CharField("First name", max_length=50)
     middle_name = models.CharField("Middle name", max_length=50)
     last_name = models.CharField("Last name", max_length=50)
-    # email = models.EmailField(blank=True, null= True, validators=[validate_email])
-    email = models.EmailField(blank=True, null=True)
+    email = models.EmailField(blank=True, null= True, validators=[validate_email])
+    # email = models.EmailField(blank=True, null=True)
     phone = models.CharField(max_length=20)
     address = models.TextField(blank=True, null=True)
 
