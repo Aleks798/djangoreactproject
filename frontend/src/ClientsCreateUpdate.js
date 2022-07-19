@@ -74,7 +74,7 @@ class  ClientCreateUpdate  extends  Component {
 
                 this.setState( {
                     id: c.id,
-                    name: c.first_name,
+                    name: c.name,
                     first_name: c.first_name,
                     middle_name: c.middle_name,
                     last_name: c.last_name,
@@ -94,6 +94,7 @@ class  ClientCreateUpdate  extends  Component {
             {
                 "pk": this.state.id,
                 "id": this.state.id,
+                "name": this.state.name,
                 "first_name": this.state.first_name,
                 "middle_name": this.state.middle_name,
                 "last_name": this.state.last_name,
@@ -113,6 +114,7 @@ class  ClientCreateUpdate  extends  Component {
             {
                 "pk": pk,
                 "id": this.state.id,
+                "name": this.state.name,
                 "first_name": this.state.first_name,
                 "middle_name": this.state.middle_name,
                 "last_name": this.state.last_name,
