@@ -4,7 +4,7 @@ const API_URL = 'http://192.168.56.102:8000';
 
 export default class ClientsService{
 
-	constructor(){}
+	//constructor(){}
 
 
 	getClients() {
@@ -32,7 +32,9 @@ export default class ClientsService{
 		const url = `${API_URL}/api/clients/${client.pk}`;
 		console.log('updateClient(client): url ='+url);
 		console.log(client);
-		const config = {headers: {"Access-Control-Allow-Origin": "*"}};
-		return axios.put(url, client, config);
+		//const config = {headers: {"Access-Control-Allow-Origin": "*"}};
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		//return axios.put(url, client, config);
+		return axios.put(url, client);
 	}
 }
