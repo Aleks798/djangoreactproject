@@ -31,7 +31,7 @@ export default class ClientsService{
 	}
 	updateClient(client){
 		const url = `${API_URL}/api/clients/${client.pk}`;
-		console.log('v.12 updateClient(client): url ='+url);
+		console.log('v.13 updateClient(client): url ='+url);
 		//console.log(client);
 		//const config = {headers: {"Access-Control-Allow-Origin": "*"}};
 		axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
