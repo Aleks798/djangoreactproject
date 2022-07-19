@@ -34,8 +34,10 @@ export default class ClientsService{
 		//console.log(client);
 		//const config = {headers: {"Access-Control-Allow-Origin": "*"}};
 		//axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-		const headers =  {'Access-Control-Allow-Origin': '*'};
-		return axios.put(url, client, headers);
+		const headers =  {
+			'Access-Control-Allow-Origin': '*',
+		};
+		return axios.put(url, client, {headers});
 		//return axios.put(url, client);
 	}
 }
