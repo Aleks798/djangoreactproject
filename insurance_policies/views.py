@@ -51,7 +51,7 @@ def policies_list(request):
 @api_view(['GET', 'POST'])
 def clients_list(request):
     """
- List of clients, or create a new policy.
+ List of clients, or create a new client.
  """
     if request.method == 'GET':
         data = []
