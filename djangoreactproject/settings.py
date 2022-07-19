@@ -58,17 +58,17 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3030',
-    'http://192.168.56.102:8000',
-    'http://192.168.56.102:3000',
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://localhost:3030',
-    'http://192.168.56.102:8000/*',
-    'http://192.168.56.102:3000/*',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3030',
+#     'http://192.168.56.102:8000',
+#     'http://192.168.56.102:3000',
+# ]
+#
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     'http://localhost:3030',
+#     'http://192.168.56.102:8000/*',
+#     'http://192.168.56.102:3000/*',
+# ]
 
 CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
