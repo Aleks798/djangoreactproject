@@ -152,4 +152,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
        'https://localhost:3000',
         'https://192.168.56.102:3000',
+        'http://localhost:3000',
+        'http://192.168.56.102:3000',
+        'http://192.168.56.102:8000',
 )
