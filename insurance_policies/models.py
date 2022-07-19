@@ -1,15 +1,26 @@
-from django.db import models
+import re
 
+from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 # fieds: id, name, first_name, middle_name, last_name, email, phone, address
+def validate_email(value):
+    if len(value) > 6:
+        if re.match('/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i', value) == None:
+            raise ValidationError(
+                _('%(value) is Wrong email'),
+                params={'value': value},)
+
+
 class Client(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField("Name", max_length=255)
     first_name = models.CharField("First name", max_length=50)
     middle_name = models.CharField("Middle name", max_length=50)
     last_name = models.CharField("Last name", max_length=50)
-    email = models.EmailField(blank=True, null= True, allowlist='/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i')
+    email = models.EmailField(blank=True, null= True, validators=validate_email)
     phone = models.CharField(max_length=20)
     address = models.TextField(blank=True, null=True)
 
