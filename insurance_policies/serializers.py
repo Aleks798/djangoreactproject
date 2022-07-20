@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import InsurancePolicy, Client
+from .models import InsurancePolicy, Client, Product
 
 
 class InsurancePolicySerializer(serializers.ModelSerializer):
@@ -21,3 +21,10 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         fields = ('pk', 'id', 'name', 'first_name', 'middle_name', 'last_name', 'email',
                   'phone', 'address')
+
+
+# fields: 'id', 'name'
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('pk', 'id', 'name')

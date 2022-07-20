@@ -40,4 +40,6 @@ urlpatterns = [
     re_path(r'^api/clients/$', views.clients_list),
     # re_path(r'^api/clients/(?P<pk>[0-9]+)$', views.clients_detail),
     re_path(r'^api/clients/([0-9]+)$', views.clients_detail),
+    re_path(r'^api/products/$', views.clients_list),
+    re_path(r'^api/products/([0-9]+)$', views.clients_detail),
 ]
