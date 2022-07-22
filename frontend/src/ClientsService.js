@@ -25,22 +25,15 @@ export default class ClientsService{
 	}
 	createClient(client){
 		const url = `${API_URL}/api/clients/`;
-		const config = {headers: {"Access-Control-Allow-Origin": "*"}};
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-		return axios.post(url, client, config);
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
+		return axios.post(url, client);
 	}
 	updateClient(client){
 		const url = `${API_URL}/api/clients/${client.pk}`;
 		console.log('v.13 updateClient(client): url ='+url);
-		//console.log(client);
-		//const config = {headers: {"Access-Control-Allow-Origin": "*"}};
 		axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
-		//axios.defaults.headers.put['Access-Control-Allow-Methods'] = 'GET,HEAD,OPTIONS,POST,PUT';
 		axios.defaults.headers.put['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
-		// const headers =  {
-		// 	'Access-Control-Allow-Origin': '*',
-		// };
-		//return axios.put(url, client, {headers});
 		return axios.put(url, client);
 	}
 }
