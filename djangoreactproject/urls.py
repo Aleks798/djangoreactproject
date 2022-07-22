@@ -30,7 +30,7 @@ from insurance_policies import views
 # Region
 # InsurancePolicy
 # RiskTable
-# PeriodOfInsurance
+# PeriodOfInsurance #
 
 
 urlpatterns = [
