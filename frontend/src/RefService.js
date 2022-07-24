@@ -17,22 +17,22 @@ export default class RefService{
 	}
 	getRef(pk, refUrl) {
 		const url = `${API_URL}/api/${refUrl}/${pk}`;
-		console.log('getRef(pk, refUrl): refUrl = '+refUrl);
+		//console.log('getRef(pk, refUrl): refUrl = '+refUrl);
 		return axios.get(url).then(response => response.data);
 	}
 	deleteRef(referenceObj){
 		const url = `${API_URL}/api/clients/${referenceObj.pk}`;
 		return axios.delete(url);
 	}
-	createRef(referenceObj, refUrl){
+	createElement(referenceObj, refUrl){
 		const url = `${API_URL}/api/${refUrl}/`;
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
 		return axios.post(url, referenceObj);
 	}
-	updateRef(referenceObj, refUrl){
+	updateElement(referenceObj, refUrl){
 		const url = `${API_URL}/api/${refUrl}/${referenceObj.pk}`;
-		console.log('updateRef(client): url ='+url);
+		////console.log('updateRef(client): url ='+url);
 		axios.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.put['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
 		return axios.put(url, referenceObj);

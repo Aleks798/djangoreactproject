@@ -40,7 +40,12 @@ export default function TemporaryDrawer(props) {
           >
             <List sx={{with: "400px"}} color="inherit" >
               <ListItem>
-                <Typography variant="h5">References</Typography>
+                <Typography
+                    sx={{
+                      variant: 'h6',
+                      fontWeight: 'Bold',
+                      textTransform: 'uppercase'
+                    }}>References</Typography>
               </ListItem>
               <Divider/>
 
@@ -71,8 +76,12 @@ export default function TemporaryDrawer(props) {
                     <ArticleIcon/>
                   </ListItemIcon>
                   <ListItemText>
-                    <Link to="/clients">
-                      <ListItemText primary="Clients"></ListItemText>
+                    <Link to="/clients"
+                          style={{ textDecoration: 'none', color: 'inherit', font: 'inherit', fontWeight: 'inherit' }}
+                    >
+                      <ListItemText sx={{
+                        fontWeight: 'Bold',
+                        textTransform: 'uppercase' } }primary="Clients"></ListItemText>
                     </Link>
                   </ListItemText>
                 </ListItemButton>

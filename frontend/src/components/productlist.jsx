@@ -22,6 +22,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import RefService from '../RefService';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import EditIcon from '@mui/icons-material/Edit';
+import ProductDialog from "./productedit";
 
 
 // function createData(name, calories, fat, carbs, protein) {
@@ -76,6 +79,7 @@ const headCells = [
         disablePadding: true,
         label: "#"
     },
+
     {
         id: "name",
         numeric: true,
@@ -93,10 +97,21 @@ function EnhancedTableHead(props) {
         numSelected,
         rowCount,
         onRequestSort,
+        setMountState,
+        reloadData,
     } = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
+
+    const [editDialogOpen, setEditDialogOpen] = React.useState(false);
+
+    const addProduct = (event) => {
+        setEditDialogOpen(true);
+        ////console.log('(event) = > setEditDialogOpen(true);');
+    }
+
+
 
     return (
         <TableHead>
@@ -111,6 +126,23 @@ function EnhancedTableHead(props) {
                             "aria-label": "select all desserts"
                         }}
                     />
+                </TableCell>
+                <TableCell padding="checkbox">
+                    <Tooltip title="Add">
+                        <IconButton onClick={addProduct}>
+                            <AddCircleIcon />
+                        </IconButton>
+                    </Tooltip>
+
+                    {editDialogOpen && (<ProductDialog
+                        id={0} open={editDialogOpen}
+                        setOpen={setEditDialogOpen}
+                        elementData={{id:0, name:''}}
+                        setMountState={setMountState}
+                        onClose={reloadData}
+                    />)
+                    }
+
                 </TableCell>
                 {headCells.map((headCell) => (
                     <TableCell
@@ -144,7 +176,9 @@ EnhancedTableHead.propTypes = {
     onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.oneOf(["asc", "desc"]).isRequired,
     orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired
+    rowCount: PropTypes.number.isRequired,
+    isMount: PropTypes.bool.isRequired,
+    setMountState: PropTypes.func.isRequired
 };
 
 const EnhancedTableToolbar = (props) => {
@@ -175,12 +209,16 @@ const EnhancedTableToolbar = (props) => {
                 </Typography>
             ) : (
                 <Typography
-                    sx={{ flex: "1 1 100%" }}
-                    variant="h6"
+                    sx={{ flex: "1 1 100%",
+                        fontWeight: 'Bold',
+                        textTransform: 'uppercase'
+                    }}
+                    variant="h7"
                     id="tableTitle"
                     component="div"
+
                 >
-                    Clients list
+                    Products list
                 </Typography>
             )}
 
@@ -197,6 +235,8 @@ const EnhancedTableToolbar = (props) => {
                     </IconButton>
                 </Tooltip>
             )}
+
+
         </Toolbar>
     );
 };
@@ -211,19 +251,43 @@ export default function ProductTable() {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(25);
+    const [isMount, setMountState] = React.useState(false);
 
     const  refService  =  new  RefService();
 
     const  [rows, setRows] = React.useState([]);
+    const [editDialogOpen, setEditDialogOpen] = React.useState(false);
     //const  [nextlink, setNextLink] = React.useState("");
 
     //const rows
 
-    refService.getRefs('products').then(function (result) {
-        setRows(result.data);
-        //setNextLink(result.nextlink);
-    });
+    React.useEffect(() => {
+            if (!isMount) {
+                refService.getRefs('products').then(function (result) {
+                    setRows(result.data);
+                    setMountState(true);
+
+                    //setNextLink(result.nextlink);
+                    //console.log('refService.getRefs');
+                })
+            };
+        }
+    ,
+        []
+    );
+
+    const reloadData = () => {
+        //console.log('reloadData()');
+        refService.getRefs('products').then(function (result) {
+            setRows(result.data);
+            setMountState(true);
+
+            //setNextLink(result.nextlink);
+            //console.log('refService.getRefs');
+        });
+
+    };
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === "asc";
@@ -241,6 +305,7 @@ export default function ProductTable() {
     };
 
     const handleClick = (event, name) => {
+
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
 
@@ -279,15 +344,30 @@ export default function ProductTable() {
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+    const [activeRow, setActiveRow] = React.useState(-1);
+
+    const editProduct = (event, id) => {
+
+        setSelected([]);
+        setEditDialogOpen(true);
+        setActiveRow(id);
+       //setMountState(false);
+
+        //handleClick(event, id);
+
+        //console.log('(event) = > editProduct('+id+');');
+    }
 
     return (
-        <Box sx={{ width: "100%" }}>
-            <Paper sx={{ width: "100%", mb: 2 }}>
-                <Typography variant={'h3'}>Products</Typography>
-                <EnhancedTableToolbar numSelected={selected.length} />
-                <TableContainer>
+        <Box sx={{ width: "60%", boxShadow: 1, ml: "30%" } } alignItems="right">
+            <Paper sx={{ width: "100%", height: "100%", mb: 2, alignItems: "right" }} >
+
+                <EnhancedTableToolbar numSelected={selected.length}  >
+
+                </EnhancedTableToolbar>
+                <TableContainer  >
                     <Table
-                        sx={{ minWidth: 750 }}
+                        sx={{ minWidth: 400 }}
                         aria-labelledby="tableTitle"
                         size={dense ? "small" : "medium"}
                     >
@@ -298,6 +378,9 @@ export default function ProductTable() {
                             onSelectAllClick={handleSelectAllClick}
                             onRequestSort={handleRequestSort}
                             rowCount={rows.length}
+                            isMount={isMount}
+                            setMountState={setMountState}
+                            reloadData={reloadData}
                         />
                         <TableBody>
                             {/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -311,11 +394,11 @@ export default function ProductTable() {
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.name)}
+                                            //onClick={(event) => handleClick(event, row.name)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.name}
+                                            key={row.id}
                                             selected={isItemSelected}
                                         >
                                             <TableCell padding="checkbox">
@@ -325,8 +408,29 @@ export default function ProductTable() {
                                                     inputProps={{
                                                         "aria-labelledby": labelId
                                                     }}
+                                                    onClick={(event) => handleClick(event, row.name)}
                                                 />
                                             </TableCell>
+
+                                            <TableCell padding="checkbox">
+                                                <Tooltip title="edit">
+                                                    <IconButton onClick={(e) => { editProduct(e, row.id)}} >
+                                                        <EditIcon />
+                                                    </IconButton>
+                                                </Tooltip>
+
+                                                {(editDialogOpen && activeRow === row.id) && (
+                                                    <ProductDialog
+                                                        id={row.id}
+                                                        open={editDialogOpen}
+                                                        setOpen={setEditDialogOpen}
+                                                        elementData={row}
+                                                        setMountState={setMountState}
+                                                        onClose={reloadData}
+
+                                                    />)}
+                                            </TableCell>
+
                                             <TableCell
                                                 component="th"
                                                 id={labelId}
@@ -368,6 +472,7 @@ export default function ProductTable() {
             <FormControlLabel
                 control={<Switch checked={dense} onChange={handleChangeDense} />}
                 label="Dense padding"
+                sx={{ mb: 1 }}
             />
         </Box>
     );
